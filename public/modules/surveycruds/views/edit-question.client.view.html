@@ -1,0 +1,44 @@
+<section data-ng-controller="SurveycrudsController" data-ng-init="findQuestion()">
+<div class="page-header">
+        <h1>Edit Question of {{surveycrud.name}}</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+            <fieldset>
+                <div class="form-group" ng-repeat="qs in surveycrud.questions"  ng-if="qs._id == questionId ">
+                    
+                    <label class="control-label" for="question">Question</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="qs.question" id="question" class="form-control" required>
+                    </div>
+                    <label class="control-label" for="select1">Select 1</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="qs.select1" id="select1" class="form-control" required>
+                    </div>    
+                    <label class="control-label" for="select2">Select 2</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="qs.select2" id="select2" class="form-control" required>
+                    </div>    
+                    <label class="control-label" for="select3">Select 3</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="qs.select3" id="select3" class="form-control" required>
+                    </div>                          
+                    <label class="control-label" for="select4">Select 4</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="qs.select4" id="select4" class="form-control" required>
+                    </div>                          
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update Question" class="btn btn-default">
+                
+		<a class="btn btn-primary" href="/#!/surveycruds/{{surveycrud._id}}">
+			<i class="glyphicon glyphicon-eject"></i>
+		</a>                        
+                </div>               
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section>

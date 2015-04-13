@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/surveysite-dev',
+	db: 'mongodb://surveyTest:surveyTest@ds061621.mongolab.com:61621/surveysite',
 	app: {
 		title: 'surveySite - Development Environment'
 	},

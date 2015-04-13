@@ -20,6 +20,14 @@ angular.module('surveycruds').config(['$stateProvider',
 		state('editSurveycrud', {
 			url: '/surveycruds/:surveycrudId/edit',
 			templateUrl: 'modules/surveycruds/views/edit-surveycrud.client.view.html'
-		});
+		}).
+		state('addSurveyQuestion', {
+			url: '/surveycruds/:surveycrudId/addQuestion',
+			templateUrl: 'modules/surveycruds/views/add-question.client.view.html'
+		}).      
+		state('editSurveyQuestion', {
+			url: '/surveycruds/:surveycrudId/editQuestion',
+			templateUrl: 'modules/surveycruds/views/edit-question.client.view.html'
+		});           
 	}
 ]);

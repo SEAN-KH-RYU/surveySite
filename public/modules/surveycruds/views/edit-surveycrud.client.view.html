@@ -12,8 +12,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default">
-                </div>
+                    <input type="submit" value="Update Survey Title" class="btn btn-default">
+                    <a class="btn btn-primary" href="/#!/surveycruds/{{surveycrud._id}}">
+                        <i class="glyphicon glyphicon-eject"></i>
+                    </a>                     
+                </div>               
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>

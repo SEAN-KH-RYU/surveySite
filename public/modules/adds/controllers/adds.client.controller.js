@@ -1,7 +1,7 @@
 'use strict';
 
 // Adds controller
-angular.module('adds').controller('AddsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Adds Survey',
+angular.module('adds').controller('AddsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Adds',
 	function($scope, $stateParams, $location, Authentication, Adds) {
 		$scope.authentication = Authentication;
 
