@@ -23,7 +23,11 @@ var SurveycrudSchema = new Schema({
             select2: { type: String, default: ''},
             select3: { type: String, default: ''},
             select4: { type: String, default: ''},
-            selected : { type: Number, default: 0}
+            selected: { type: String, default: ''},
+            selected1 : { type: Number, default: 0},
+            selected2 : { type: Number, default: 0},
+            selected3 : { type: Number, default: 0},
+            selected4 : { type: Number, default: 0}
         }
     ],
 	created: {

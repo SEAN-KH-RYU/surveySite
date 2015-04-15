@@ -2,7 +2,7 @@
 	<div class="page-header">
 		<h1 data-ng-bind="surveycrud.name"></h1>
 	</div>
-    <div class="row">
+    <div class="row"  data-ng-show="((authentication.user) && (authentication.user._id == surveycrud.user._id))">
         <!-- Table -->
         <table class="table">
             <thead>
@@ -20,10 +20,10 @@
                 <tr ng-repeat="question in surveycrud.questions">
                     <th>{{$index + 1}}</th>
                     <th>{{question.question}}</th>
-                    <th>{{question.select1}}</th>
-                    <th>{{question.select2}}</th>
-                    <th>{{question.select3}}</th>
-                    <th>{{question.select4}}</th>
+                    <th>{{question.select1}} <span class="badge">{{question.selected1}}</span></th>
+                    <th>{{question.select2}} <span class="badge">{{question.selected2}}</span></th>
+                    <th>{{question.select3}} <span class="badge">{{question.selected3}}</span></th>
+                    <th>{{question.select4}} <span class="badge">{{question.selected4}}</span></th>
                     <th>
                         <a class="btn btn-primary" ng-click="editQuestion(question._id)">
                             <i class="glyphicon glyphicon-edit"></i>
@@ -45,7 +45,37 @@
             Delete Survey
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
-	</div>
+	</div>    
+    <div class="row"  data-ng-show="(!authentication.user)" ng-repeat="question in surveycrud.questions">
+        <div class="col-sm-6">{{$index + 1}}. {{question.question}}</div><br/>
+        <div class="col-sm-9">
+            <div  >
+                <label >
+                    <input type="radio" ng-model="question.selected" name="{{$index}}" value="1" /> {{question.select1}}
+                </label><br/> 
+                <label >
+                    <input type="radio" ng-model="question.selected" name="{{$index}}" checked="checked" value="2" /> {{question.select2}}
+                </label><br/> 
+                <label >
+                    <input type="radio" ng-model="question.selected" name="{{$index}}" value="3" /> {{question.select3}}
+                </label><br/> 
+                <label >
+                    <input type="radio" ng-model="question.selected" name="{{$index}}" value="4" /> {{question.select4}}
+                </label><br/> 
+            </div>
+        </div>
+    </div>
+    <br/>
+	<div class="pull-right" data-ng-show="(!authentication.user)">
+        <a class="btn btn-primary" href="/#!/">
+            Back To List
+			<i class="glyphicon glyphicon-th-list"></i>
+		</a>
+        <a class="btn btn-primary" data-ng-click="submitSurvey();">
+            Submit
+			<i class="glyphicon glyphicon-floppy-save"></i>
+		</a>        
+    </div>
 	<small>
 		<em class="text-muted">
 			Posted on

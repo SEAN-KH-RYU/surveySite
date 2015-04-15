@@ -4,6 +4,9 @@ module.exports = function(app) {
 	var users = require('../../app/controllers/users.server.controller');
 	var surveycruds = require('../../app/controllers/surveycruds.server.controller');
 
+    var core = require('../../app/controllers/core.server.controller');
+    app.route('/').get(core.index);
+    
 	// Surveycruds Routes
 	app.route('/surveycruds')
 		.get(surveycruds.list)

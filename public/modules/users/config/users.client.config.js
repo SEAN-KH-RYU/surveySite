@@ -12,7 +12,7 @@ angular.module('users').config(['$httpProvider',
 							case 401:
 								// Deauthenticate the global user
 								Authentication.user = null;
-
+console.log('$location = ' + JSON.stringify($location));
 								// Redirect to signin page
 								$location.path('signin');
 								break;

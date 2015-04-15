@@ -28,7 +28,7 @@ angular.module('surveycruds').controller('SurveycrudsController', ['$scope', '$s
             var surveycrud = $scope.surveycrud;
 			//var surveycrudNew = $scope.surveycrud;
             console.log('this.question='+this.question);
-            surveycrud['questions'].push({
+            surveycrud.questions.push({
                 question: this.question,
                 select1: this.select1,
                 select2: this.select2,
@@ -71,6 +71,45 @@ angular.module('surveycruds').controller('SurveycrudsController', ['$scope', '$s
 			});
 		};
 		// Update existing Surveycrud
+		$scope.submitSurvey = function() {
+			var surveycrud = $scope.surveycrud;
+			//var surveycrudNew = $scope.surveycrud;
+            console.log('$scope.questions='+$scope.surveycrud.questions.length);
+            if(surveycrud.questions.length){
+                for(var i = 0; i < $scope.surveycrud.questions.length; i++){
+                    var selected = surveycrud.questions[i].selected;
+                    console.log('$scope.surveycrud.questions['+i+'].selected='+surveycrud.questions[i].selected);
+                    switch(selected){
+                        case '1':
+                            surveycrud.questions[i].selected1++;
+                            break;
+                        case '2':
+                            surveycrud.questions[i].selected2++;
+                            break;
+                        case '3':
+                            surveycrud.questions[i].selected3++;
+                            break;
+                        case '4':
+                            surveycrud.questions[i].selected4++;
+                            break;
+                        default:
+                            break;
+                    }
+                    console.log('surveycrud.questions['+i+'].selected1='+surveycrud.questions[i].selected1);
+                    console.log('surveycrud.questions['+i+'].selected2='+surveycrud.questions[i].selected2);
+                    console.log('surveycrud.questions['+i+'].selected3='+surveycrud.questions[i].selected3);
+                    console.log('surveycrud.questions['+i+'].selected4='+surveycrud.questions[i].selected4);
+                }
+            }
+            // Redirect after save
+			surveycrud.$update(function() {
+				$location.path('updateCount');
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+
+		};        
+		// Update existing Surveycrud
 		$scope.editQuestion = function(questionId) {
 			var surveycrud = $scope.surveycrud;
             $scope.questionId = questionId;
@@ -90,9 +129,11 @@ angular.module('surveycruds').controller('SurveycrudsController', ['$scope', '$s
 
 		// Find existing Surveycrud
 		$scope.findOne = function() {
+            $scope.settings = {}; 
 			$scope.surveycrud = Surveycruds.get({ 
 				surveycrudId: $stateParams.surveycrudId
 			});
+            console.log('$scope.surveycrud.questions='+$scope.surveycrud.questions);
 		};
 		// Find existing Surveycrud
 		$scope.findQuestion = function() {

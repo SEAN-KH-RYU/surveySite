@@ -37,8 +37,9 @@ exports.read = function(req, res) {
  * Update a Surveycrud
  */
 exports.update = function(req, res) {
+    console.log('exports.update');
 	var surveycrud = req.surveycrud ;
-
+    
 	surveycrud = _.extend(surveycrud , req.body);
 
 	surveycrud.save(function(err) {
