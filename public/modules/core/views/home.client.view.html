@@ -1,19 +1,31 @@
 <section data-ng-controller="HomeController" data-ng-init="find()">
-	<div class="jumbotron text-center">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-				<img alt="MEAN.JS" class="img-responsive text-center" src="modules/core/img/brand/logo1.png" />
-			</div>
-		</div>
-		<br>
-		<div class="row">
+	<div class="jumbotron text-center" data-ng-show="(!authentication.user)">
+		<div class="row bg">
 			<p class="lead">
-            <h2>MEAN Applications for Survey Site</h2>
+                <img alt="Logo" class="img-responsive text-center" src="modules/core/img/brand/logo2.png" />
+            <h1>Free Survey Site</h1>
 			</p>
 		</div>
 	</div>
-    <div class="page-header">
-        <h1>Survey List</h1>
+<br/><br/>
+    <div class="clear-fix" data-ng-show="(!authentication.user)">
+
+        <h1 class="jumbotron2 text-center">Create <strong>Free Online Surveys</strong> and use your field!</h1>
+
+        <div class="home-hero-button" >
+            <a class="btn btn-info btn-lg"
+               data-ng-href="/#!/signup">Sign Up Free</a>
+            <a class="btn btn-success btn-lg"
+               data-ng-href="/#!/signin">Sign In</a>
+        </div>
+    </div>
+    <div class="page-header" data-ng-show="(!authentication.user)">
+        <h1>Join the Survey in the List</h1>
+    </div>
+    <div class="page-header" data-ng-show="authentication.user">
+        <h1>Dashboard</h1>
+        <a class="btn btn-success btn-lg"
+               data-ng-href="/#!/surveycruds/create">Add New Survey</a>
     </div>
     <div class="list-group">
         <a data-ng-repeat="surveycrud in surveycruds" data-ng-href="#!/surveycruds/{{surveycrud._id}}" class="list-group-item">
